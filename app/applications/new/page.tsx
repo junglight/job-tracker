@@ -2,35 +2,35 @@ import { addApplication } from "./actions";
 
 export default function NewApplicationPage() {
   return (
-    <main className="p-8 max-w-2xl">
+    <main className="max-w-2xl">
       <h1 className="text-3xl font-bold mb-6">Add Application</h1>
 
-      <form action={addApplication} className="space-y-4">
+      <form action={addApplication} className="space-y-5">
         <div>
-          <label className="block mb-1 font-medium">Company</label>
+          <label className="mb-1 block text-sm font-medium text-zinc-300">Company</label>
           <input
             type="text"
             name="company"
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Role</label>
+          <label className="block mb-1 text-sm font-medium text-zinc-300">Role</label>
           <input
             type="text"
             name="role"
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Source</label>
+          <label className="block mb-1 text-sm font-medium text-zinc-300">Source</label>
           <select
             name="source"
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
             required
           >
             <option value="">Select source</option>
@@ -44,30 +44,30 @@ export default function NewApplicationPage() {
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Date Applied</label>
+          <label className="block mb-1 text-sm font-medium text-zinc-300">Date Applied</label>
           <input
             type="date"
             name="date_applied"
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Time Spent (hours)</label>
+          <label className="block mb-1 text-sm font-medium text-zinc-300">Time Spent (hours)</label>
           <input
             type="number"
             name="time_spent_hours"
             step="0.25"
             min="0"
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Status</label>
+          <label className="block mb-1 text-sm font-medium text-zinc-300">Status</label>
           <select
             name="status"
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
             required
           >
             <option value="">Select status</option>
@@ -82,26 +82,26 @@ export default function NewApplicationPage() {
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Job URL</label>
+          <label className="block mb-1 text-sm font-medium text-zinc-300">Job URL</label>
           <input
             type="url"
             name="job_url"
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Notes</label>
+          <label className="block mb-1 text-sm font-medium text-zinc-300">Notes</label>
           <textarea
             name="notes"
-            className="w-full border rounded p-2"
+            className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
             rows={4}
           />
         </div>
 
         <button
           type="submit"
-          className="rounded bg-black px-4 py-2 text-white"
+          className="rounded-lg bg-white px-4 py-2 font-medium text-black hover:bg-zinc-200"
         >
           Add Application
         </button>

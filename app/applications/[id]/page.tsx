@@ -48,8 +48,8 @@ export default async function ApplicationDetailsPage({
       <form action={archiveApplicationWithId} className="inline-block ml-3">
       <button
         type="submit"
-        className="rounded border px-4 py-2"
-      >
+        className="rounded-lg border border-zinc-700 px-4 py-2 hover:bg-zinc-900"      >
+        
         Archive
       </button>
     </form>

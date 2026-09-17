@@ -2,6 +2,7 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import TimeBySourceChart from "@/components/TimeBySourceChart";
 import ConversionBySourceChart from "@/components/ConversionBySourceChart";
+export const dynamic = "force-dynamic";
 
 type Application = {
   id: string;
@@ -23,7 +24,7 @@ export default async function Home() {
     .order("created_at", { ascending: false });
 
   if (error) {
-    return <main className="p-8">Error: {error.message}</main>;
+    return <main>Error: {error.message}</main>;
   }
 
   const applications = (data ?? []) as Application[];
@@ -146,63 +147,62 @@ applications.forEach((application) => {
 
 
       {/* ROI metric cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
 
-        <div className="border rounded-lg p-5">
-          <p className="text-sm text-zinc-500">
+      <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-5 shadow-sm">
+        <p className="text-sm text-zinc-400">
             Total Applications
           </p>
 
-          <p className="text-3xl font-bold mt-2">
-            {totalApplications}
+        <p className="mt-2 text-3xl font-bold">            
+          {totalApplications}
           </p>
         </div>
 
 
-        <div className="border rounded-lg p-5">
-          <p className="text-sm text-zinc-500">
+      <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-5 shadow-sm">
+        <p className="text-sm text-zinc-400">
             Phone Screen Conversion
           </p>
 
-          <p className="text-3xl font-bold mt-2">
+        <p className="mt-2 text-3xl font-bold">  
             {conversionRate.toFixed(1)}%
           </p>
         </div>
 
 
-        <div className="border rounded-lg p-5">
-          <p className="text-sm text-zinc-500">
+      <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-5 shadow-sm">
+        <p className="text-sm text-zinc-400">
             Avg Hours per Interview
           </p>
 
-          <p className="text-3xl font-bold mt-2">
+        <p className="mt-2 text-3xl font-bold">  
             {averageHoursPerInterview.toFixed(1)}
           </p>
         </div>
 
-
-        <div className="border rounded-lg p-5">
-          <p className="text-sm text-zinc-500">
+      <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-5 shadow-sm">
+        <p className="text-sm text-zinc-400">
             Best Source
           </p>
 
-          <p className="text-3xl font-bold mt-2">
+        <p className="mt-2 text-3xl font-bold">  
             {bestSource}
           </p>
         </div>
 
       </div>
 
-      <section className="mt-10">
-        <h2 className="text-2xl font-bold mb-4">
+      <section className="mt-8 rounded-xl border border-zinc-800 bg-zinc-950 p-6">
+        <h2 className="mb-4 text-xl font-semibold">
           Time Spent by Source
         </h2>
 
         <TimeBySourceChart data={timeBySourceData} />
       </section>
 
-      <section className="mt-10">
-        <h2 className="text-2xl font-bold mb-4">
+      <section className="mt-6 rounded-xl border border-zinc-800 bg-zinc-950 p-6">
+        <h2 className="mb-4 text-xl font-semibold">
           Conversion Rate by Source
         </h2>
 

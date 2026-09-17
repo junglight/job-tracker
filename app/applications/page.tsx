@@ -28,32 +28,44 @@ if (status) {
 }
 const { data: applications, error } = await query;
 
-  if (error) {
-    return <div className="p-8">Error: {error.message}</div>;
-  }
-  if (!applications || applications.length === 0) {
+if (error) {
   return (
-    <main className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Applications</h1>
-      <p>No applications yet.</p>
+    <main>
+      <div className="rounded-xl border border-red-900 bg-red-950/40 p-4 text-red-300">
+        Error: {error.message}
+      </div>
+    </main>
+  );
+}
+
+if (!applications || applications.length === 0) {
+  return (
+    <main>
+      <h1 className="mb-6 text-3xl font-bold">Applications</h1>
+
+      <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-6">
+        <p className="text-zinc-400">
+          No applications yet.
+        </p>
+      </div>
     </main>
   );
 }
   return (
-    <main className="p-8">
+    <main>
       <h1 className="text-3xl font-bold mb-6">Applications</h1>
-      <form className="mb-6">
+      <form className="mb-6  flex flex-wrap gap-3">
         <input
           type="text"
           name="search"
           defaultValue={search || ""}
           placeholder="Search company or role"
-          className="border rounded p-2 mr-2"
+          className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
         />
         <select
           name="status"
           defaultValue={status || ""}
-          className="border rounded p-2 mr-2"
+          className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
         >
           <option value="">All statuses</option>
           <option>Waiting</option>
@@ -68,7 +80,7 @@ const { data: applications, error } = await query;
         <select
           name="source"
           defaultValue={source || ""}
-          className="border rounded p-2 mr-2"
+          className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2"
         >
           <option value="">All sources</option>
           <option>LinkedIn</option>
@@ -80,23 +92,24 @@ const { data: applications, error } = await query;
         </select>
         <button
           type="submit"
-          className="rounded bg-black px-4 py-2 text-white"
+          className="rounded-lg bg-white px-4 py-2 font-medium text-black hover:bg-zinc-200"
         >
           Search
         </button>
 
       </form>
-
-      <table className="w-full border-collapse rounded-lg overflow-hidden">
-        <thead className="bg-zinc-100">
+    
+    <div className="overflow-x-auto rounded-xl border border-zinc-800">
+      <table className="w-full border-collapse">
+        <thead className="bg-zinc-900">
 
           <tr>
-            <th className="border p-3 text-left">Company</th>
-            <th className="border p-3 text-left">Role</th>
-            <th className="border p-3 text-left">Source</th>
-            <th className="border p-3 text-left">Status</th>
-            <th className="border p-3 text-left">Date Applied</th>
-            <th className="border p-3 text-left">Hours</th>
+            <th className="p-3 text-left text-sm font-semibold text-zinc-300">Company</th>
+            <th className="p-3 text-left text-sm font-semibold text-zinc-300">Role</th>
+            <th className="p-3 text-left text-sm font-semibold text-zinc-300">Source</th>
+            <th className="p-3 text-left text-sm font-semibold text-zinc-300">Status</th>
+            <th className="p-3 text-left text-sm font-semibold text-zinc-300">Date Applied</th>
+            <th className="p-3 text-left text-sm font-semibold text-zinc-300">Hours</th>
           </tr>
         </thead>
 
@@ -123,6 +136,7 @@ const { data: applications, error } = await query;
           ))}
         </tbody>
       </table>
+    </div>
     </main>
   );
 }
